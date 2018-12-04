@@ -10,8 +10,10 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
-    "test": ""
+    "preversion": "npm t",
+    "test": "npm run test:lint && npm run test:tape",
+    "test:lint": "eslint -c .eslintrc.json *.js",
+    "test:tape": "tape index.test.js"
   },
   "homepage": "https://github.com/zacanger/is-program-installed#readme",
   "repository": {
@@ -27,7 +29,17 @@
     "program"
   ],
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-eslint": "10.0.1",
+    "eslint": "5.9.0",
+    "eslint-config-zacanger": "3.4.1",
+    "eslint-plugin-babel": "5.3.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-node": "8.0.0",
+    "eslint-plugin-promise": "4.0.1",
+    "eslint-plugin-unicorn": "6.0.1",
+    "tape": "4.9.1"
+  },
   "engines": {
     "node": ">=10.0.0"
   }

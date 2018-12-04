@@ -1,6 +1,6 @@
 {
   "name": "is-program-installed",
-  "description": "is-program-installed",
+  "description": "Check if a program is installed, on Unix-like systems.",
   "version": "0.0.1",
   "author": {
     "name": "Zac Anger",
@@ -20,8 +20,11 @@
   },
   "bugs": "https://github.com/zacanger/is-program-installed/issues",
   "keywords": [
-    "",
-    "is-program-installed"
+    "command",
+    "exec",
+    "executable",
+    "hash",
+    "program"
   ],
   "dependencies": {},
   "devDependencies": {},

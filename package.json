@@ -1,7 +1,7 @@
 {
   "name": "is-program-installed",
   "description": "Check if a program is installed, on Unix-like systems.",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "author": {
     "name": "Zac Anger",
     "email": "zac@zacanger.com",

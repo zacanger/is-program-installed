@@ -34,13 +34,13 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "eslint": "7.1.0",
-    "eslint-plugin-zacanger": "2.0.0",
+    "eslint": "7.3.0",
+    "eslint-plugin-zacanger": "2.0.3",
     "husky": "4.2.5",
-    "lint-staged": "10.2.6",
+    "lint-staged": "10.2.11",
     "prettier": "2.0.5",
-    "sortpack": "2.1.4",
-    "tape": "5.0.0"
+    "sortpack": "2.1.5",
+    "tape": "5.0.1"
   },
   "engines": {
     "node": ">=10.0.0"

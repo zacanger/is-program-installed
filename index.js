@@ -8,7 +8,7 @@ const isLinuxInstalled = (program) => {
   try {
     exec(`hash ${program} 2>/dev/null`)
     return true
-  } catch (_) {
+  } catch {
     return false
   }
 }
@@ -17,7 +17,7 @@ const isMacInstalled = (program) => {
   try {
     exec(`osascript -e 'id of application "${program}"' 2>&1>/dev/null`)
     return true
-  } catch (_) {
+  } catch {
     return false
   }
 }

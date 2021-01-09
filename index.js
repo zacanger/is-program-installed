@@ -1,3 +1,4 @@
+const { readdirSync } = require('fs')
 const { execSync } = require('child_process')
 
 const opts = {
@@ -12,6 +13,34 @@ const isUnixInstalled = (program) => {
   } catch {
     return false
   }
+}
+
+const isDirectory = (path) => {
+  try {
+    readdirSync(path)
+    return true
+  } catch {
+    return false
+  }
+}
+const isDotDesktopInstalled = (program) => {
+  const dirs = [
+    process.env.XDG_DATA_HOME && process.env.XDG_DATA_HOME + '/applications',
+    process.env.HOME && process.env.HOME + '/.local/share/applications',
+    '/usr/share/applications',
+    '/usr/local/share/applications',
+  ]
+    .filter(Boolean)
+    .filter(isDirectory)
+
+  const trimExtension = (x) => x.replace(/\.desktop$/, '')
+  const desktopFiles = dirs
+    .flatMap((x) => readdirSync(x))
+    .filter((x) => x.endsWith('.desktop'))
+    .map(trimExtension)
+
+  const programTrimmed = trimExtension(program)
+  return desktopFiles.includes(programTrimmed)
 }
 
 const isMacInstalled = (program) => {
@@ -47,4 +76,9 @@ const isWindowsInstalled = (program) => {
 }
 
 module.exports = (program) =>
-  [isUnixInstalled, isMacInstalled, isWindowsInstalled].some((f) => f(program))
+  [
+    isUnixInstalled,
+    isMacInstalled,
+    isWindowsInstalled,
+    isDotDesktopInstalled,
+  ].some((f) => f(program))

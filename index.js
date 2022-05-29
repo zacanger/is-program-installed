@@ -2,7 +2,7 @@ const { readdirSync } = require('fs')
 const { execSync } = require('child_process')
 
 const opts = {
-  stdio: 'ignore',
+  stdio: 'ignore'
 }
 const exec = (cmd) => execSync(cmd, opts)
 
@@ -28,7 +28,7 @@ const isDotDesktopInstalled = (program) => {
     process.env.XDG_DATA_HOME && process.env.XDG_DATA_HOME + '/applications',
     process.env.HOME && process.env.HOME + '/.local/share/applications',
     '/usr/share/applications',
-    '/usr/local/share/applications',
+    '/usr/local/share/applications'
   ]
     .filter(Boolean)
     .filter(isDirectory)
@@ -59,12 +59,10 @@ const isWindowsInstalled = (program) => {
     `where ${program}`,
     `where ${program}.exe`,
     `where.exe ${program}`,
-    `where.exe ${program}.exe`,
+    `where.exe ${program}.exe`
   ]
 
-  // eslint-disable-next-line fp/no-let
   let success = false
-  // eslint-disable-next-line fp/no-loops
   for (const a of attempts) {
     try {
       exec(a)
@@ -80,5 +78,5 @@ module.exports = (program) =>
     isUnixInstalled,
     isMacInstalled,
     isWindowsInstalled,
-    isDotDesktopInstalled,
+    isDotDesktopInstalled
   ].some((f) => f(program))

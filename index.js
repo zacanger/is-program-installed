@@ -1,5 +1,6 @@
 const { readdirSync } = require('fs')
 const { execSync } = require('child_process')
+const sanitize = require('sanitize-filename')
 
 const opts = {
   stdio: 'ignore'
@@ -73,10 +74,9 @@ const isWindowsInstalled = (program) => {
   return success
 }
 
-module.exports = (program) =>
-  [
-    isUnixInstalled,
-    isMacInstalled,
-    isWindowsInstalled,
-    isDotDesktopInstalled
-  ].some((f) => f(program))
+module.exports = (program) => [
+  isUnixInstalled,
+  isMacInstalled,
+  isWindowsInstalled,
+  isDotDesktopInstalled
+].some((f) => f(sanitize(program)))

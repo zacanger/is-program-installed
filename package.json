@@ -33,11 +33,14 @@
     "program"
   ],
   "devDependencies": {
-    "sortpack": "2.2.3",
+    "sortpack": "2.3.0",
     "standard": "17.0.0",
     "tape": "5.5.3"
   },
   "engines": {
     "node": ">=10.0.0"
+  },
+  "dependencies": {
+    "sanitize-filename": "1.6.3"
   }
 }

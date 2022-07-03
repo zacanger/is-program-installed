@@ -75,10 +75,12 @@ const isWindowsInstalled = (program) => {
 
 const sanitize = (program) => {
   // from https://github.com/parshap/node-sanitize-filename/ licensed WTFPL/ISC
+  /* eslint-disable no-useless-escape,no-control-regex */
   const illegalRe = /[\/\?<>\\:\*\|"]/g
   const controlRe = /[\x00-\x1f\x80-\x9f]/g
   const reservedRe = /^\.+$/
   const probablyTwoThingsRe = /\&\&/g
+  /* eslint-enable no-useless-escape,no-control-regex */
   return program
     .replace(illegalRe, '')
     .replace(controlRe, '')

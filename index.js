@@ -1,6 +1,5 @@
 const { readdirSync } = require('fs')
 const { execSync } = require('child_process')
-const sanitize = require('sanitize-filename')
 
 const opts = {
   stdio: 'ignore'
@@ -72,6 +71,19 @@ const isWindowsInstalled = (program) => {
   }
 
   return success
+}
+
+const sanitize = (program) => {
+  // from https://github.com/parshap/node-sanitize-filename/ licensed WTFPL/ISC
+  const illegalRe = /[\/\?<>\\:\*\|"]/g
+  const controlRe = /[\x00-\x1f\x80-\x9f]/g
+  const reservedRe = /^\.+$/
+  const probablyTwoThingsRe = /\&\&/g
+  return program
+    .replace(illegalRe, '')
+    .replace(controlRe, '')
+    .replace(reservedRe, '')
+    .replace(probablyTwoThingsRe, '')
 }
 
 module.exports = (program) => [

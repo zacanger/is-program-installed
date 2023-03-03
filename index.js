@@ -80,12 +80,14 @@ const sanitize = (program) => {
   const controlRe = /[\x00-\x1f\x80-\x9f]/g
   const reservedRe = /^\.+$/
   const probablyTwoThingsRe = /\&\&/g
+  const beginsWithBgRe = /^&+/
   /* eslint-enable no-useless-escape,no-control-regex */
   return program
     .replace(illegalRe, '')
     .replace(controlRe, '')
     .replace(reservedRe, '')
     .replace(probablyTwoThingsRe, '')
+    .replace(beginsWithBgRe, '')
 }
 
 module.exports = (program) => [

@@ -29,9 +29,9 @@
     "program"
   ],
   "devDependencies": {
-    "sortpack": "2.3.2",
+    "sortpack": "2.3.3",
     "standard": "17.0.0",
-    "tape": "5.6.1"
+    "tape": "5.6.3"
   },
   "engines": {
     "node": ">=16.0.0"

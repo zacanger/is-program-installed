@@ -2,6 +2,8 @@
 
 Check if a program is installed.
 
+[Donate](https://ko-fi.com/zacanger)
+
 --------
 
 ## Installation
